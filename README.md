@@ -1,6 +1,8 @@
 # AWS Pricing Calculator Skill
 
-Generate shareable [AWS Pricing Calculator](https://calculator.aws) URLs from architecture descriptions, blog posts, or solution documents.
+Generate shareable [AWS Pricing Calculator](https://calculator.aws) URLs from architecture descriptions, blog posts, or solution documents — ready for MAP (Migration Acceleration Program) funding applications, customer proposals, and internal cost reviews.
+
+**How is this different from the AWS Pricing MCP?** The AWS Pricing MCP looks up unit prices (e.g., "$0.0416/hr for m5.xlarge"). This skill goes end-to-end: it discovers calculator schemas, looks up prices, builds the full estimate JSON with `calculationComponents`, and POSTs to the AWS Save API to produce a shareable calculator URL that stakeholders can open, review, and edit in the browser.
 
 ## Install
 

@@ -28,9 +28,21 @@ The CLI scripts work standalone without the MCP (you provide costs manually in t
 
 ## Supported Services
 
+These tiers describe how the generated calculator URL behaves in the browser, not usage limits.
+You can include as many services as you want in an estimate.
+
 **Tier 1 (fully editable):** EC2, EBS, Flink, S3, Secrets Manager
+- Opens normally in the calculator — users can click and edit all fields
+- Uses simple `calculationComponents` format with proven, stable schemas
 
 **Tier 2 (may show read-only):** AppStream, RDS Oracle, MSK, OpenSearch
+- May show a blue "read-only" warning banner in the calculator UI
+- Costs still display correctly, users just cannot edit fields inline
+- Uses `columnFormIPM` format which is sensitive to version changes
+
+**Other services:** The skill can discover schemas for all 430+ AWS services
+via `calc_discover.py`. Services not listed above have not been pre-tested,
+so their `calculationComponents` format is not yet documented.
 
 ## Usage
 

@@ -8,6 +8,16 @@ Generate shareable [AWS Pricing Calculator](https://calculator.aws) URLs from ar
 npx skills add quincysting/aws-pricing-calculator
 ```
 
+## Prerequisites
+
+| Prerequisite | Required For | Notes |
+|---|---|---|
+| Python 3 | CLI scripts | stdlib only, no `pip install` needed |
+| curl | CLI scripts | avoids Python SSL issues with CloudFront |
+| [AWS Pricing MCP Server](https://github.com/awslabs/mcp/tree/main/src/aws-pricing-mcp-server) | Skill workflow | `get_pricing` for real price lookups |
+
+The CLI scripts work standalone without the MCP (you provide costs manually in the spec), but the full `/aws-pricing-calculator` skill workflow requires it for automatic price lookups.
+
 ## What It Does
 
 1. **Extracts services** from architecture docs, blog posts, or descriptions
@@ -43,16 +53,16 @@ Invoke via `/aws-pricing-calculator` or use trigger phrases:
 
 ```bash
 # Discover service schemas
-python scripts/calc_discover.py ec2Enhancement amazonS3
+python3 scripts/calc_discover.py ec2Enhancement amazonS3
 
 # List all available services
-python scripts/calc_discover.py --list
+python3 scripts/calc_discover.py --list
 
 # Build estimate from spec
-python scripts/calc_build.py spec.json -o estimate.json
+python3 scripts/calc_build.py spec.json -o estimate.json
 
 # Save and get calculator URL
-python scripts/calc_save.py estimate.json
+python3 scripts/calc_save.py estimate.json
 ```
 
 ## License
